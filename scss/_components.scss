@@ -1,0 +1,444 @@
+//title
+.title {
+  letter-spacing: 0.2rem;
+  font-weight: 300;
+}
+
+.title-secondary {
+  font-weight: 300;
+  letter-spacing: 0.2rem;
+}
+
+//lead
+.lead {
+  line-height: 2rem;
+  font-size: 1rem;
+}
+
+// Tech list
+.tech-item {
+  color: green;
+}
+
+//Container
+.container {
+  padding: 2rem 1rem;
+}
+
+// Overlay
+.overlay {
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  background-color: rgba($color-black-about, 0.6);
+}
+
+// Video
+.bg-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: -1;
+  opacity: 0.5;
+  overflow: hidden;
+
+  &__content {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+  }
+}
+
+// Header
+.header {
+  background-image: linear-gradient(
+    rgba($color-secondary, 0.7),
+    rgba($color-primary, 0.7)
+  );
+  // url(/img/header.jpg);
+  background-size: cover;
+  background-position: center;
+  padding: 1rem;
+  position: relative;
+
+  & a {
+    &:before,
+    &:after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      width: 5px;
+      height: 2px;
+      margin: 5px 0 0;
+      transition: all 0.5s ease-in-out;
+      opacity: 0;
+      background-color: $color-text;
+      left: 0;
+    }
+    &:hover {
+      &:before,
+      &:after {
+        width: 100%;
+        opacity: 1;
+      }
+    }
+  }
+
+  &__brand {
+    font-family: 'Slabo 27px', serif;
+    margin-right: auto;
+  }
+
+  &__all {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    width: 98%;
+    z-index: 100;
+  }
+
+  &__nav {
+    display: flex;
+
+    &-items {
+      display: flex;
+    }
+    &-item {
+      &:not(:last-child) {
+        margin-right: 1rem;
+      }
+    }
+  }
+  &__bottom {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: all 1s ease-in-out;
+
+    span {
+      font-family: sans-serif;
+      transition: all 0.5s ease-in-out;
+    }
+
+    // arrow animation stuff
+    & a:hover {
+      &:after,
+      &:before {
+        opacity: 0;
+      }
+    }
+
+    & a:hover + span {
+      transition: all 0.5s ease-in-out;
+      transform: translateY(0.5rem);
+    }
+
+    & a:active + span {
+      transform: translateY(1rem);
+    }
+  }
+
+  & .scrolled {
+    & a {
+      color: $color-black-about;
+
+      &:before,
+      &:after {
+        background-color: $color-black-about;
+      }
+    }
+    h1 {
+      color: transparent;
+      transition: all 0.5s;
+    }
+  }
+}
+
+// About
+.about {
+  background-color: $color-black-about;
+  color: $color-beige;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  &__text {
+    text-align: center;
+    width: 33.33333%;
+  }
+}
+
+.projects {
+  display: grid;
+  grid-template-rows: 1fr;
+  // grid-template-columns: 1fr 1fr;
+  background-color: rgba($color-primary, 0.7);
+}
+
+.project {
+  color: $color-black-about;
+  background-color: #eee;
+  position: relative;
+  margin: 1rem 2rem;
+  border-radius: 2px;
+  overflow: hidden;
+  box-shadow: 0 1rem 2rem rgba($color-black-about, 0.7);
+
+  &:hover .project__tech {
+    transform: translateX(0);
+    transition: all 0.5s ease-in-out;
+  }
+
+  &__card {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    img {
+      width: 100%;
+    }
+    &-text {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    &-p {
+      padding: 2rem;
+    }
+    &-title {
+      font-size: 2rem;
+    }
+
+    & i {
+      font-size: 3rem;
+    }
+
+    a {
+      display: inline-block;
+      color: $color-black-about;
+
+      &:hover {
+        transform: scale(1.1);
+      }
+    }
+  }
+
+  &__tech {
+    height: 100%;
+    width: 50%;
+    top: 0;
+    left: 0;
+    background-color: rgba($color-black-about, 0.6);
+    transform: translatex(-60rem);
+    color: $color-text;
+    position: absolute;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    &-header {
+      font-size: 2rem;
+      font-weight: 400;
+    }
+    & ul {
+      width: 100%;
+      height: 50%;
+      background-color: rgba($color-black-about, 0.6);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+}
+
+.contact {
+  background-color: $color-black-about;
+  color: $color-beige;
+
+  i {
+    margin-right: 0.5rem;
+  }
+
+  & .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &-title {
+    margin-bottom: 2rem;
+    font-size: 2rem;
+  }
+}
+
+// .footer {
+//   background-color: $color-black-about;
+//   color: $color-beige;
+//   text-align: center;
+// }
+
+// Projects before trying something new
+// .projects {
+//   background-color: $color-primary;
+//   display: grid;
+//   grid-template-columns: 1fr 1fr;
+//   grid-template-rows: 1fr 1fr;
+//   grid-gap: 1rem;
+//   padding: 1rem;
+// }
+
+// .project {
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+//   transition: all 1s;
+//   overflow: hidden;
+
+//   &__card {
+//     background-image: url(../img/musicians-home.png);
+//     background-size: cover;
+
+//     width: 100%;
+//     height: 100%;
+
+//     &-text {
+//       display: flex;
+//       flex-direction: column;
+//       align-items: center;
+//       justify-content: center;
+//       width: 100%;
+//       height: 100%;
+//     }
+
+//     &-title {
+//     }
+
+//     &-p {
+//       width: 75%;
+//       text-align: center;
+//     }
+
+//     &-icons {
+//       margin-top: 2rem;
+//     }
+//   }
+
+//   .overlay {
+//     transform: translatex(-30rem);
+//     transition: all 0.5s ease-in-out;
+//   }
+
+//   &:hover .overlay {
+//     transform: translatex(0);
+//   }
+
+//   & i {
+//     font-size: 3rem;
+//   }
+
+//   a {
+//     display: inline-block;
+
+//     &:hover {
+//       transform: scale(1.1);
+//     }
+//   }
+// }
+
+// .project-secondary {
+//   background-color: $color-black-about;
+//   color: $color-beige;
+//   display: flex;
+//   flex-direction: column;
+//   justify-content: flex-end;
+//   &__all {
+//     height: 75%;
+//     display: flex;
+//     flex-direction: column;
+//     justify-content: flex-start;
+//     align-items: flex-start;
+//     padding: 1rem;
+//   }
+// }
+
+// .project-secondary-2 {
+//   background-color: $color-black-about;
+//   color: $color-beige;
+//   display: flex;
+//   flex-direction: column;
+//   justify-content: flex-end;
+//   &__all {
+//     height: 75%;
+//     display: flex;
+//     flex-direction: column;
+//     justify-content: flex-start;
+//     align-items: flex-end;
+//     padding: 1rem;
+//   }
+// }
+
+// // Changes for other side of screen
+// .project-2 {
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+//   transition: all 1s;
+//   overflow: hidden;
+
+//   &__card {
+//     background-image: url(../img/reddit-app.png);
+//     background-size: cover;
+
+//     width: 100%;
+//     height: 100%;
+
+//     &-text {
+//       display: flex;
+//       flex-direction: column;
+//       align-items: center;
+//       justify-content: center;
+//       width: 100%;
+//       height: 100%;
+//     }
+
+//     &-title {
+//     }
+
+//     &-p {
+//       width: 75%;
+//       text-align: center;
+//     }
+
+//     &-icons {
+//       margin-top: 2rem;
+//     }
+//   }
+
+//   .overlay {
+//     transform: translatex(30rem);
+//     transition: all 0.5s ease-in-out;
+//   }
+
+//   &:hover .overlay {
+//     transform: translatex(0);
+//   }
+
+//   & i {
+//     font-size: 3rem;
+//   }
+
+//   a {
+//     display: inline-block;
+
+//     &:hover {
+//       transform: scale(1.1);
+//     }
+//   }
+// }

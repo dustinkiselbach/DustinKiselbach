@@ -1,0 +1,22 @@
+.header {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  // scroll-snap-align: start;
+}
+
+.about {
+  height: 50vh;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 400;
+  // scroll-snap-align: start;
+}
+.projects {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 400;
+}
+
+.project {
+}
