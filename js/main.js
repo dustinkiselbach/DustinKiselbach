@@ -34,6 +34,8 @@
 //   observer.observe(document.querySelector('#top-of-site-pixel-anchor'))
 // }
 
+// Scroll stuff
+
 window.addEventListener('scroll', function () {
   const elementTarget = document.querySelector('.about')
   let header = document.querySelector('.header__all')
@@ -50,3 +52,30 @@ window.addEventListener('scroll', function () {
     header.classList.remove('scrolled')
   }
 })
+
+// Menu Stuff
+
+const menuBtn = document.querySelector('.menu-btn')
+const closeBtn = document.querySelector('.close-btn')
+const menuItems = document.querySelectorAll('.mobile-menu__item')
+
+menuBtn.addEventListener('click', function (e) {
+  e.preventDefault()
+  let mobileMenu = document.querySelector('.mobile-menu')
+
+  mobileMenu.classList.add('clicked')
+})
+
+closeBtn.addEventListener('click', function () {
+  let mobileMenu = document.querySelector('.mobile-menu')
+
+  mobileMenu.classList.remove('clicked')
+})
+
+for (let item = 0; item < menuItems.length; item++) {
+  menuItems[item].addEventListener('click', function () {
+    let mobileMenu = document.querySelector('.mobile-menu')
+
+    mobileMenu.classList.remove('clicked')
+  })
+}

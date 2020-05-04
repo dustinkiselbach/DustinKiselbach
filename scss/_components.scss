@@ -112,7 +112,19 @@
         margin-right: 1rem;
       }
     }
+
+    &-phone {
+      display: none;
+      @include respond(phone) {
+        display: block;
+      }
+    }
+
+    @include respond(phone) {
+      display: none;
+    }
   }
+
   &__bottom {
     display: flex;
     flex-direction: column;
@@ -158,6 +170,60 @@
   }
 }
 
+// Mobile menu
+.mobile-menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  z-index: 1000;
+  background-color: transparent;
+  transform: translateY(-100rem);
+  transition: transform 0.3s ease-in-out, background-color 0.5s ease-in,
+    color 5s ease-in-out;
+
+  &__items {
+    font-size: 2rem;
+    font-weight: 300;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+
+    padding: 1rem;
+  }
+  &__item {
+    width: 100%;
+    &:not(:last-child) {
+      border-bottom: 1px solid rgba($color-text, 0.5);
+    }
+
+    padding: 1rem;
+  }
+  &__close {
+    display: flex;
+    justify-content: flex-end;
+    padding: 1.5rem 0.5rem;
+  }
+
+  a {
+    transform: translateX(5rem);
+    color: transparent;
+  }
+}
+
+// Clicked state of menu
+.clicked {
+  transform: translateY(0);
+  background-color: $color-black-about;
+
+  a {
+    color: $color-text;
+    transform: translateX(0);
+  }
+}
+
 // About
 .about {
   background-color: $color-black-about;
@@ -168,6 +234,11 @@
   &__text {
     text-align: center;
     width: 33.33333%;
+
+    @include respond(phone) {
+      width: 100%;
+      padding: 1rem;
+    }
   }
 }
 
@@ -186,15 +257,29 @@
   border-radius: 2px;
   overflow: hidden;
   box-shadow: 0 1rem 2rem rgba($color-black-about, 0.7);
+  @include respond(phone) {
+    margin: 1rem;
+  }
 
   &:hover .project__tech {
-    transform: translateX(0);
+    @media (pointer: fine) {
+      transform: translateX(0);
+    }
+
     transition: all 0.5s ease-in-out;
+  }
+
+  &:active .project__tech {
+    transform: translateX(0);
   }
 
   &__card {
     display: grid;
     grid-template-columns: 1fr 1fr;
+    @include respond(phone) {
+      display: flex;
+      flex-direction: column;
+    }
 
     img {
       width: 100%;
@@ -212,16 +297,36 @@
       font-size: 2rem;
     }
 
+    &-icons {
+      display: flex;
+    }
+
     & i {
       font-size: 3rem;
     }
 
     a {
-      display: inline-block;
+      display: flex;
       color: $color-black-about;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
 
       &:hover {
-        transform: scale(1.1);
+        transform: scale(1.1) translateY(-0.1rem);
+        text-shadow: 0 0.1rem 0.5rem rgba($color-black-about, 0.6);
+        @media (pointer: coarse) {
+          transform: none;
+          text-shadow: none;
+        }
+      }
+
+      &:active {
+        transform: translateY(-0.2rem) scale(1.2);
+        text-shadow: 0 0.4rem 0.8rem rgba($color-black-about, 0.6);
+      }
+      & small {
+        padding: 0.5rem;
       }
     }
   }
@@ -239,7 +344,12 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: space-evenly;
+
+    @include respond(phone) {
+      height: 50%;
+      width: 100%;
+    }
 
     &-header {
       font-size: 2rem;
